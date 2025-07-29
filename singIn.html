@@ -17,22 +17,11 @@
 <body>
 
     <header>
-        <div class="container">
-            <a id="logo" href="#"><img src="img/logo-cooperativa.jpg" alt="nomCooperativa"></a>
-
-            <form id="search-form" method="get" action="/search">
-                <div class="search-content">
-                    <input type="text" id="search-input" name="q" placeholder="Buscar...">
-                    <button type="submit"><a href="#">Buscar</a></button>
-                </div>
-            </form>
-
-            <nav>
-                <ul>
-                    <li><a href="logIn.html">Registrate</a></li>
-                    <li><a href="#">Iniciar sesión</a></li>
-                </ul>
-            </nav>
+        <div class="btn container">
+            <a class="btn-inicio" href="logIn.html">Iniciar sesión</a>
+        </div>
+        <div class="h1 container">
+            <h1>nomCooperativa</h1>
         </div>
     </header>
 
@@ -40,62 +29,104 @@
 
         <div class="cons-content">
 
-            <h3>Inicia sesión</h3>
+            <h3>Registrate</h3>
 
-            <form action="/PHP/validar.php" method="post">
+            <form action="/PHP/agregar.php" method="post">
 
                 <div class="input-container">
-                    <input type="email" name="Email" placeholder="" required pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,3}$">
+                    <input type="text" name="Nombres" placeholder="" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,40}">
+                    <label for="Nombres">Nombres</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="Apellidos" placeholder="" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,40}">
+                    <label for="Apellidos">Apellidos</label>
+                </div>
+
+                <p>Fecha de nacimiento</p>
+                <div class="input-container fecha">
+                    <input class="input-fecha" type="date" name="FechaN" required>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="CI" placeholder="" required pattern="^[0-9-]{8,9}$">
+                    <label for="CI">Cédula de identidad</label>
+                </div>
+
+                <p>Género</p>
+                <div class="genero">
+                    <select name="optGenero" required>
+                        <option>Hombre</option>
+                        <option>Mujer</option>
+                    </select>
+                </div>
+
+                <div class="input-container">
+                    <input type="tel" name="Tel" placeholder="" required pattern="^[0-9]{8,12}$">
+                    <label for="Tel">Teléfono</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="email" name="Email" placeholder="" required pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,100}$">
                     <label for="Email">Email</label>
                 </div>
 
+                <div class="input-container">
+                    <input type="text" name="Direccion" placeholder="" required>
+                    <label for="Direccion">Dirección</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="number" name="CantPersonas" placeholder="" required pattern="[0-9]{1,3}">
+                    <label for="CantPersonas">Cantidad de personas</label>
+                </div>
+                
                 <div class="input-container">
                     <input type="password" name="Contrasenia" placeholder="" required pattern="[a-zA-Z0-9.,:-ªº\s]{8,100}">
                     <label for="Contrasenia">Contraseña</label>
                 </div>
 
-                <button type="submit" href="index.html">Iniciar sesión</button>
-
-                <p>Si no tenés un usuario registrate <a href="logIn.html">aquí</a></p>
+                <button type="submit" href="logIn.html">Crear</button>
 
             </form>
+        </div>
 
     </main>
 
     <footer>
         <div class="container">
             <div class="col-3">
-                <h5><a href="#">Socios</a></h5>
+                <h5><a href="logIn.html">Socios</a></h5>
                 <ul>
-                    <li><a href="#">Libro de socios</a></li>
-                    <li><a href="#">Nómina de socios</a></li>
-                    <li><a href="#">Control de recursos humanos</a></li>
+                    <li><a href="logIn.html">Libro de socios</a></li>
+                    <li><a href="logIn.html">Nómina de socios</a></li>
+                    <li><a href="logIn.html">Control de recursos humanos</a></li>
                 </ul>
             </div>
 
             <div class="col-4">
-                <h5><a href="#">Contabilidad</a></h5>
+                <h5><a href="logIn.html">Contabilidad</a></h5>
                 <ul>
-                    <li><a href="#">Pago de servicios</a></li>
-                    <li><a href="#">Libro contable</a></li>
-                    <li><a href="#">Gastos comunes</a></li>
-                    <li><a href="#">¿Cómo gestionar un subsidio?</a></li>
+                    <li><a href="logIn.html">Pago de servicios</a></li>
+                    <li><a href="logIn.html">Libro contable</a></li>
+                    <li><a href="logIn.html">Gastos comunes</a></li>
+                    <li><a href="logIn.html">¿Cómo gestionar un subsidio?</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5><a href="#">Legal</a></h5>
+                <h5><a href="logIn.html">Legal</a></h5>
                 <ul>
-                    <li><a href="#">Actas</a></li>
-                    <li><a href="#">Declaraciones juradas</a></li>
+                    <li><a href="logIn.html">Actas</a></li>
+                    <li><a href="logIn.html">Declaraciones juradas</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5><a href="#">Reclamos</a></h5>
+                <h5><a href="logIn.html">Reclamos</a></h5>
                 <ul>
-                    <li><a href="#">Formulario de reclamo</a></li>
-                    <li><a href="#">Formulario de denuncia</a></li>
+                    <li><a href="logIn.html">Formulario de reclamo</a></li>
+                    <li><a href="logIn.html">Formulario de denuncia</a></li>
                 </ul>
             </div>
         </div>

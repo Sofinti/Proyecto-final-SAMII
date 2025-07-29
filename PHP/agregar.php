@@ -10,11 +10,9 @@ if($_POST){
     $Email         =  $_POST['Email'];
     $Direccion     =  $_POST['Direccion'];
     $CantPersonas  =  $_POST['CantPersonas'];
-    $password      =  $_POST['contraseña'];
+    $Contrasenia   =  $_POST['Contrasenia'];
 
 }
-
-$hash = password_hash($contrasenia, PASSWORD_DEFAULT);
 
 // creamos sentencia mysql de inserción
 $sql = "INSERT INTO `usuarios`(`Nombres`, `Apellidos`, `FechaN`, `CI`, `optGenero`, `Tel`, `Email`, `Direccion`, `CantPersonas`, `Contrasenia`) 
