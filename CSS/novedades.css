@@ -39,7 +39,7 @@ header .container {display: flex; justify-content: space-between; align-items: c
     align-items: center;
 }
 
-.search-content {border: 1px solid var(--color-primary); border-radius: 4px;}
+fieldset {border: 1px solid var(--color-primary); border-radius: 4px;}
 
 #search-input {
     background: #ffffff;
@@ -80,14 +80,13 @@ nav ul li:hover > ul {display: initial;}
 
 #hero {position: relative;}
 
-#hero img {width: 100%; display: block;}
+#hero img {width: 100%; display: block; max-height: 350px;}
 
 main {display: grid;}
 
-h2 {font-size: 26px; color: var(--color-dark); margin: 1rem 0;}
-h4 {font-size: 21px; color: var(--color-dark); margin: 8px 0;}
+h2 {font-size: 34px; color: var(--color-dark); margin: 1rem 0;}
 h5 {font-size: 18px; color: var(--color-dark); margin: 1rem 0; vertical-align: inherit;}
-p {color: var(--color-dark);}
+p {color: #313131;}
 
 .info-content {
     background: var(--color-light);
@@ -95,77 +94,18 @@ p {color: var(--color-dark);}
     background-repeat: no-repeat;
     background-size: cover;
     justify-self: center;
-    padding: 30px;
-    min-width: 1400px;
-    border-radius: 0 0 25px 25px;
+    padding: 40px 150px 100px 150px;
+    width: auto;
+    height: auto;
+    min-width: 550px;
+    max-width: 1420px;
 }
 
-main .container {margin: 0;}
-
-.section-content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-.section-1 {
-    background: var(--color-medium); 
-    padding: 24px; 
-    text-align: center; 
-    border-radius: 6px;
-}
-
-.icono-section {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    display: inline-grid;
-    place-items: center;
-}
-
-.section-txt {padding: 0px 10px; justify-items: center; text-align: center;}
-
-.novedades-content{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 16px;
-}
-
-.novedad-1{
-    max-width: min-content;
-    background: var(--color-medium);
-    border-radius: 25px;
-}
-
-.novedad-1 img{
-    max-width: 250px;
-    padding: 4px;
-    border-radius: 25px;
-}
-
-.novedad-txt {padding: 0px 10px; justify-items: center; text-align: center;}
-
-.novedad-txt p {color: #646464;}
-
-.btn-1{
-    background: var(--color-primary);
-    display: inline-block;
-    align-content: flex-end;
-    padding: 5px 25px;
-    border: 2px solid var(--color-primary);
-    border-radius: 25px;
-    margin: 10px 0;
-    font-size: 17px;
-    color: var(--color-light);
-}
-
-.btn-1:hover{background: var(--color-light);color: var(--color-primary);}
+.info-txt {font-size: 23px;}
 
 footer {
     background: var(--color-primary);
     min-height: 200px;
-    margin: 16px 0 0 0;
 }
 
 footer .container {display: flex; justify-content: space-between; align-items: center; height: 100%;}
