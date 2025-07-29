@@ -5,7 +5,7 @@ $usr      = "root";
 $pwd      = "";
 
 // almacenamos nombre de la base de datos
-$bd       = "Cooprativa";
+$bd       = "Cooperativa";
 
 // creamos la variable de conexion
 $con = new mysqli($servidor, $usr, $pwd, $bd);
