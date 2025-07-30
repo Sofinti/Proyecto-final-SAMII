@@ -1,33 +1,39 @@
 <?php
 include("bd.php");
-$Email = $_POST['Email'];
-$contrasenia = $_POST['contrasenia'];
 
-// Creamos una sesión basada en un identificador
-// de sesión pasado mediante una petición GET o POST
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+$correo      = $_POST['Email'];
+$contrasenia = $_POST['Contrasenia'];
+
+// Iniciar sesión
 session_start();
-$SESSION['Email'] = $Email;
+$_SESSION['Email'] = $correo;
 
-// Sentencia de consulta para saber si ese usr con esa pwd esta en la BD.
-$sql="SELECT * FROM Email
-    WHERE Email ='$Email' AND contrasenia = '$contrasenia'";
-$resultado = mysqli_query($con,$sql);
-$filas = mysqli_num_rows($resultado);
+// Buscar al usuario por su email
+$sql = "SELECT * FROM Usuarios WHERE Correo = '$correo'";
+$resultado = mysqli_query($con, $sql);
 
-// Validamos
-if($filas){
-    Header("Location: home.php");
-}else{
-    ?>
-    <?php 
-        include("index.php");
-    ?>
-    <h1 class="bad">Email o contraseña incorrecto, verifique sus datos </h1>
+if ($resultado && mysqli_num_rows($resultado) > 0) {
+    $usuario = mysqli_fetch_assoc($resultado);
 
-<?php
+    // Verificar la contraseña con password_verify
+    if (password_verify($contrasenia, $usuario['Contraseña'])) {
+        // Redirigir al home si todo está bien
+        header("Location: home.php");
+        exit();
+    } else {
+        // Contraseña incorrecta
+        echo "<h1 class='bad'>Correo o contraseña incorrecto, verifique sus datos</h1>";
+    }
+} else {
+    // Email no encontrado
+    echo "<h1 class='bad'>Correo o contraseña incorrecto, verifique sus datos</h1>";
 }
 
-// Vaciamos el resultado y cerramos la conexion
+// Liberar memoria y cerrar conexión
 mysqli_free_result($resultado);
 mysqli_close($con);
 ?>
