@@ -1,0 +1,27 @@
+services:
+    web:
+        image: php:8.2-apache
+        ports:
+          - "80:80"
+        volumes:
+          - .:/var/www/html
+        networks:
+          - app-network
+    database:
+        image: mysql
+        ports:
+          - "3306:3306"
+        volumes:
+          - db_data:/var/liv/mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: "root"
+          MYSQL_DATABASE: "prototipo"
+          MYSQL_USER: "root"
+          MYSQL_PASSWORD: "root"
+        networks:
+          - app-network
+volumes:
+  db_data:
+networks:
+  app-network:
+    driver: bridge
