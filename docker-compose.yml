@@ -1,18 +1,20 @@
 services:
     web:
         image: php:8.2-apache
+        volumes:
+          - ./src:/var/www/html
+          - ./public:/var/www/html/public
         ports:
           - "80:80"
-        volumes:
-          - .:/var/www/html
         networks:
-          - app-network
+          - backend
+          - frontend
     database:
         image: mysql
-        ports:
-          - "3306:3306"
         volumes:
           - db_data:/var/liv/mysql
+        ports:
+          - "3306:3306"
         environment:
           MYSQL_ROOT_PASSWORD: "root"
           MYSQL_DATABASE: "prototipo"
