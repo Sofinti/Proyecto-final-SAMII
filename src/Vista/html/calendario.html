@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samantha: Reclamos</title>
+    <title>Samantha: Calendario</title>
 
-    <link rel="stylesheet" href="/CSS/secciones.css">
+    <link rel="stylesheet" href="/src/Vista/CSS/calendario.css">
     <link rel="shortcut icon" href="/img/logo-cooperativa.jpg" type="image/xicon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 
     <header>
         <div class="container">
-            <a id="logo" href="/index.html"><img src="/img/logo-cooperativa.jpg" alt="Samantha"></a>
+            <a id="logo" href="/src/Vista/html/index.html"><img src="/img/logo-cooperativa.jpg" alt="Samantha"></a>
 
             <form id="search-form" method="get" action="/search">
                 <fieldset>
@@ -27,12 +27,12 @@
 
             <nav>
                 <ul>
-                    <li><a href="/calendario.html">Calendario</a></li>
+                    <li><a href="/src/Vista/html/index.html">Principal</a></li>
                     <li><a href=""><img src="/img/Iconos/user.png" alt="Icono-usuario"></a>
                         <ul>
                             <li><a href="">Mi cuenta</a>
                             <li><a href="">Configuración</a>
-                            <li><a href="singIn.html">Cerrar sesión</a></li>
+                            <li><a href="logIn.html">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -41,26 +41,15 @@
     </header>
 
     <main>
-        <section class="info-content">
 
-            <h2>Información sobre reclamos</h2>
+        <iframe id="calendario" src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FMontevideo&showPrint=0&showTitle=0&showTz=0&title=Calendario%3A%20nomCooperativa&showCalendars=0&src=YWQ0YWRmOTI5YjFjNzY1NWUyMzQ5ODVlM2YwMzE4ZmIyMjdiODA3Mjc3NGI5MTNmOTRlMWFmN2E3ZWVhYmQ5MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23f6bf26" style="border-width:0" frameborder="0" scrolling="no"></iframe>
 
-            <div class="info-txt">
-                
-                <ul>
-                    <li><a href="/Documentos/">Formulario de reclamo</a></li>
-                    <li><a href="/Documentos/">Formulario de denuncia</a></li>
-                </ul>
-
-            </div>
-
-        </section>
     </main>
 
     <footer>
         <div class="container">
             <div class="col-3">
-                <h5><a href="socios.html">Socios</a></h5>
+                <h5><a href="/src/Vista/html/secciones/socios.html">Socios</a></h5>
                 <ul>
                     <li><a href="">Libro de socios</a></li>
                     <li><a href="">Nómina de socios</a></li>
@@ -69,7 +58,7 @@
             </div>
 
             <div class="col-4">
-                <h5><a href="contabilidad.html">Contabilidad</a></h5>
+                <h5><a href="/src/Vista/html/secciones/contabilidad.html">Contabilidad</a></h5>
                 <ul>
                     <li><a href="">Pago de servicios</a></li>
                     <li><a href="">Libro contable</a></li>
@@ -79,15 +68,15 @@
             </div>
 
             <div class="col-2">
-                <h5><a href="legal.html">Legal</a></h5>
+                <h5><a href="/src/Vista/html/secciones/legal.html">Legal</a></h5>
                 <ul>
-                    <li><a href="actas.html">Actas</a></li>
+                    <li><a href="/actas.html">Actas</a></li>
                     <li><a href="https://www.gub.uy/junta-transparencia-etica-publica/politicas-y-gestion/gestion-declaraciones-juradas#:~:text=Descripci%C3%B3n,archivo%20de%20las%20declaraciones%20juradas.">Declaraciones juradas</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5><a href="#">Reclamos</a></h5>
+                <h5><a href="/src/Vista/html/secciones/reclamos.html">Reclamos</a></h5>
                 <ul>
                     <li><a href="/Documentos/">Formulario de reclamo</a></li>
                     <li><a href="/Documentos/">Formulario de denuncia</a></li>
