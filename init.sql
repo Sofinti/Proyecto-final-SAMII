@@ -6,7 +6,7 @@ CREATE TABLE Administrador (
     Nombre VARCHAR(50) NOT NULL,
     Apellido VARCHAR(50) NOT NULL,
     Correo VARCHAR(100) NOT NULL,
-    Contraseña VARCHAR(100) NOT NULL
+    Contrasenia VARCHAR(100) NOT NULL
 );
 
 -- Teléfono del Administrador

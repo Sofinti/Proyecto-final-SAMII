@@ -1,0 +1,37 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: web
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    ports:
+      - "3306:3306" #esto es opcional, depende de si quieren monitorear la db o si simplemente la quieren exponer usen:
+    #expose:
+    #  - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cooperativa
+      MYSQL_USER: samii
+      MYSQL_PASSWORD: samii
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./seeds.sql:/docker-entrypoint-initdb.d/seeds.sql
+    networks:
+      - app-network
+volumes:
+  db_data:
+
+networks:
+  app-network:
+    driver: bridge
