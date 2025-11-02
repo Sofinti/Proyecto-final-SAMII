@@ -1,0 +1,22 @@
+FROM php:8.2-fpm
+
+# Instalar extensiones necesarias
+RUN docker-php-ext-install pdo pdo_mysql
+
+# Instalar Nginx
+RUN apt-get update && apt-get install -y nginx && rm -rf /var/lib/apt/lists/*
+
+# Copiar configuración de Nginx
+COPY nginx/conf.d/default.conf /etc/nginx/sites-available/default
+
+# Copiar código de la aplicación
+COPY app /var/www/html
+
+# Exponer puerto
+EXPOSE 8080
+
+# Script de inicio
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]
