@@ -1,63 +1,37 @@
-version: '3.8'
-
 services:
-  # 1. SERVIDOR DE BASE DE DATOS: MySQL (db)
+  web:
+    image: php:8.2-apache
+    container_name: web
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    networks:
+      - app-network
+
   db:
     image: mysql:8.0
-    container_name: samantha-db
-    restart: always
+    container_name: db
+    ports:
+      - "3306:3306" #esto es opcional, depende de si quieren monitorear la db o si simplemente la quieren exponer usen:
+    #expose:
+    #  - "3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cooperativa
+      MYSQL_USER: samii
+      MYSQL_PASSWORD: samii
     volumes:
       - db_data:/var/lib/mysql
-      - ./db_schema:/docker-entrypoint-initdb.d
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./seeds.sql:/docker-entrypoint-initdb.d/seeds.sql
     networks:
       - app-network
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "${MYSQL_USER}", "-p${MYSQL_PASSWORD}"]
-      timeout: 20s
-      retries: 10
+volumes:
+  db_data:
 
-
-  # 2. SERVIDOR DE APLICACIÓN: PHP-FPM (app) - Backend
-  app:
-    build: .
-    container_name: samantha-app
-    restart: always
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-    volumes:
-      - ./app:/var/www/html
-    networks:
-      - app-network
-    depends_on:
-      db:
-        condition: service_healthy
-
-  # 3. SERVIDOR WEB: Nginx (webserver) - Punto de Entrada (Frontend)
-  webserver:
-    image: nginx:stable-alpine
-    container_name: samantha-web
-    restart: always
-    ports:
-      - "${NGINX_HOST_PORT}:80"
-    volumes:
-      - ./app:/var/www/html
-      - ./nginx/conf.d:/etc/nginx/conf.d
-    networks:
-      - app-network
-    depends_on:
-      - app
-
-# Definición de Red y Volúmenes
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  db_data:
