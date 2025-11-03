@@ -1,4 +1,5 @@
 services:
+  # 1. SERVIDOR DE APLICACIÓN
   web:
     image: php:8.2-apache
     container_name: web
@@ -11,13 +12,12 @@ services:
     networks:
       - app-network
 
+  # 2. SERVIDOR DE BASE DE DATOS
   db:
     image: mysql:8.0
     container_name: db
     ports:
-      - "3306:3306" #esto es opcional, depende de si quieren monitorear la db o si simplemente la quieren exponer usen:
-    #expose:
-    #  - "3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: cooperativa
@@ -29,6 +29,31 @@ services:
       - ./seeds.sql:/docker-entrypoint-initdb.d/seeds.sql
     networks:
       - app-network
+
+  # 3. SERVIDOR DE RESPALDOS (NUEVO)
+  backup:
+    image: mysql:8.0
+    container_name: backup_server
+    depends_on:
+      - db
+    volumes:
+      - ./backups:/backups
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: cooperativa
+    networks:
+      - app-network
+    # Script que hace backup cada 24 horas
+    command: >
+      bash -c "
+      while true; do
+        echo 'Iniciando backup...'
+        mysqldump -h db -u root -proot cooperativa > /backups/backup_$$(date +%Y%m%d_%H%M%S).sql
+        echo 'Backup completado: backup_$$(date +%Y%m%d_%H%M%S).sql'
+        sleep 86400
+      done
+      "
+
 volumes:
   db_data:
 
