@@ -16,3 +16,5 @@ git switch main
 git pull (nombre de la rama que quieren traer)
 
 Listo :)
+
+http://127.0.0.1/

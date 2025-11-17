@@ -1,9 +1,8 @@
-# 1. Usamos la imagen FPM
-FROM php:8.4-fpm-alpine
+# Imagen base
+from php:8.2-apache
 
-# 2. Instalamos las extensiones de PHP para MySQL
-# (Esta es la línea que soluciona el error)
-RUN docker-php-ext-install pdo_mysql
+# Activar el módulo de rewrite de Apache
+RUN a2enmod rewrite
 
-# 3. Establecemos el directorio de trabajo
-WORKDIR /var/www/html
+# Instalar extensiones de PHP para MySQL
+RUN docker-php-ext-install pdo pdo_mysql

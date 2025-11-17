@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteBase /
+
+# Si la petición NO es un archivo que existe...
+RewriteCond %{REQUEST_FILENAME} !-f
+# Y NO es una carpeta que existe...
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirigir a index.php en la raíz
+RewriteRule ^(.*)$ index.php [L,QSA]
