@@ -1,21 +1,5 @@
 CREATE DATABASE IF NOT EXISTS samantha_db;
 use samantha_db;
--- Tabla Administrador
-CREATE TABLE Administrador (
-    Id_Administrador INT PRIMARY KEY,
-    Nombre VARCHAR(50) NOT NULL,
-    Apellido VARCHAR(50) NOT NULL,
-    Correo VARCHAR(100) NOT NULL,
-    Contrasenia VARCHAR(100) NOT NULL
-);
-
--- Teléfono del Administrador
-CREATE TABLE TelefonoAdministrador (
-    Id_Administrador INT,
-    Telefono VARCHAR(15),
-    PRIMARY KEY (Id_Administrador, Telefono),
-    FOREIGN KEY (Id_Administrador) REFERENCES Administrador(Id_Administrador)
-);
 
 -- Tabla Usuarios
 CREATE TABLE Usuarios (
@@ -24,19 +8,13 @@ CREATE TABLE Usuarios (
     Nombre VARCHAR(50) NOT NULL,
     Apellido VARCHAR(50) NOT NULL,
     FechaNacimiento DATE NOT NULL,
-    Genero VARCHAR (50) NOT NULL,
+    Telefono VARCHAR(15),
     Correo VARCHAR(100) NOT NULL,
     Contrasenia VARCHAR(100) NOT NULL,
     Direccion VARCHAR(100) NOT NULL,
-    CantidadPersonas INT NOT NULL
-);
-
--- Teléfono del Usuario
-CREATE TABLE TelefonoUsuario (
-    Id_Usuario INT,
-    Telefono VARCHAR(15),
-    PRIMARY KEY (Id_Usuario, Telefono),
-    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
+    Rol ENUM NOT NULL,
+    Estado ENUM NOT NULL,
+    FechaRegistro DATETIME NOT NULL
 );
 
 -- NumTarjeta del Usuario
@@ -47,46 +25,72 @@ CREATE TABLE NumerosTarjeta (
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
+--Unidad de vivienda
+CREATE TABLE UnidadHabitacional (
+    Id_Unidad INT PRIMARY KEY,
+    Id_Usuario INT,
+    NumeroUnidad VARCHAR,
+    Descripcion VARCHAR,
+    Estado ENUM,
+    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
+);
+
+
 -- Horas Laborales
 CREATE TABLE HorasLaborales (
     Id_Horas INT PRIMARY KEY,
     Id_Usuario INT,
-    Cantidad_Horas INT,
-    Tiempo VARCHAR(20),
+    SemanaCompletada VARCHAR,
+    HorasTrabajadas DECIMAL,
+    HorasFaltantes DECIMAL,
+    Motivo TEXT,
+    SolicitaExoneracion BOOLEAN,
+    MontoCompensatorio DECIMAL,
+    Estado ENUM,
+    FechaRevision DATETIME,
+    Id_AdminAprobador NULL
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
 -- Pagos
-CREATE TABLE Pago (
-    Id_Pago INT PRIMARY KEY,
+CREATE TABLE PagoInicial (
+    id_PagoInicial INT PRIMARY KEY,
     Id_Usuario INT,
-    Costo DECIMAL(10,2),
+    Fecha DATETIME,
+    Monto DECIMAL,
+    Comprobante_url VARCHAR,
+    Estado ENUM,
+    FechaRevision DATETIME,
+    Id_AdminAprobador NULL
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
--- Relación Realiza Pago
-CREATE TABLE Realiza (
-    Id_Horas INT,
+CREATE TABLE PagoMensual (
+    Id_PagoMensual INT PRIMARY KEY,
     Id_Usuario INT,
-    PRIMARY KEY (Id_Horas, Id_Usuario),
-    FOREIGN KEY (Id_Horas) REFERENCES HorasLaborales(Id_Horas),
+    Mes TINYINT,
+    Ano SMALLINT,
+    Monto DECIMAL
+    Comprobante_url VARCHAR,
+    Estado ENUM,
+    FechaRevision DATETIME,
+    Id_AdminAprobador NULL
     FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
 );
 
--- Relación Ejecuta Pago
-CREATE TABLE Ejecuta (
-    Id_Pago INT,
-    Id_Usuario INT,
-    PRIMARY KEY (Id_Pago, Id_Usuario),
-    FOREIGN KEY (Id_Pago) REFERENCES Pago(Id_Pago),
-    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
+--Comisión
+CREATE TABLE Comision (
+    Id_Comision INT PRIMARY KEY,
+    Nombre VARCHAR,
+    Descripcion TEXT
 );
 
--- Relación Admite Pago
-CREATE TABLE Admite (
-    Id_Administrador INT,
+--Usuario de una comisión
+CREATE TABLE UsuarioComision (
     Id_Usuario INT,
-    PRIMARY KEY (Id_Administrador, Id_Usuario),
-    FOREIGN KEY (Id_Administrador) REFERENCES Administrador(Id_Administrador),
-    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario)
+    Id_Comision INT,
+    RolEnComision ENUM,
+    PRIMARY KEY (Id_Usuario, Id_Comision),
+    FOREIGN KEY (Id_Usuario) REFERENCES Usuarios(Id_Usuario),
+    FOREIGN KEY (Id_Comision) REFERENCES Comision(Id_Comision)
 );

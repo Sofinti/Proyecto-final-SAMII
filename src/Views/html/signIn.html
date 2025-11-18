@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samantha: Registrarse</title>
 
-    <link rel="stylesheet" href="/Views/CSS/singIn.css">
+    <link rel="stylesheet" href="/Views/CSS/signIn.css">
     <link rel="shortcut icon" href="/img/logo-cooperativa.jpg" type="image/xicon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 
     <header>
         <div class="btn container">
-            <a class="btn-inicio" href="/Views/html/logIn.html">Iniciar sesión</a>
+            <a class="btn-inicio" href="/login">Iniciar sesión</a>
         </div>
         <div class="h1 container">
             <h1>Samantha</h1>
@@ -31,7 +31,7 @@
 
             <h3>Registrate</h3>
 
-            <form action="/agregar" method="post">
+            <form action="/registro" method="POST">
 
                 <div class="input-container">
                     <input type="text" name="Nombres" placeholder="" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,40}">
@@ -53,14 +53,6 @@
                     <label for="CI">Cédula de identidad</label>
                 </div>
 
-                <p>Género</p>
-                <div class="genero">
-                    <select name="optGenero" required>
-                        <option>Hombre</option>
-                        <option>Mujer</option>
-                    </select>
-                </div>
-
                 <div class="input-container">
                     <input type="tel" name="Tel" placeholder="" required pattern="^[0-9]{8,12}$">
                     <label for="Tel">Teléfono</label>
@@ -75,18 +67,13 @@
                     <input type="text" name="Direccion" placeholder="" required>
                     <label for="Direccion">Dirección</label>
                 </div>
-
-                <div class="input-container">
-                    <input type="number" name="CantPersonas" placeholder="" required pattern="[0-9]{1,3}">
-                    <label for="CantPersonas">Cantidad de personas</label>
-                </div>
                 
                 <div class="input-container">
                     <input type="password" name="Contrasenia" placeholder="" required pattern="[a-zA-Z0-9.,:-ªº\s]{8,100}">
                     <label for="Contrasenia">Contraseña</label>
                 </div>
 
-                <button type="submit" href="/Views/html/logIn.html">Crear</button>
+                <button type="submit">Crear</button>
 
             </form>
         </div>
@@ -96,37 +83,37 @@
     <footer>
         <div class="container">
             <div class="col-3">
-                <h5><a href="/Views/html/logIn.html">Socios</a></h5>
+                <h5><a href="/login">Socios</a></h5>
                 <ul>
-                    <li><a href="/Views/html/logIn.html">Libro de socios</a></li>
-                    <li><a href="/Views/html/logIn.html">Nómina de socios</a></li>
-                    <li><a href="/Views/html/logIn.html">Control de recursos humanos</a></li>
+                    <li><a href="/login">Libro de socios</a></li>
+                    <li><a href="/login">Nómina de socios</a></li>
+                    <li><a href="/login">Control de recursos humanos</a></li>
                 </ul>
             </div>
 
             <div class="col-4">
-                <h5><a href="/Views/html/logIn.html">Contabilidad</a></h5>
+                <h5><a href="/login">Contabilidad</a></h5>
                 <ul>
-                    <li><a href="/Views/html/logIn.html">Pago de servicios</a></li>
-                    <li><a href="/Views/html/logIn.html">Libro contable</a></li>
-                    <li><a href="/Views/html/logIn.html">Gastos comunes</a></li>
-                    <li><a href="/Views/html/logIn.html">¿Cómo gestionar un subsidio?</a></li>
+                    <li><a href="/login">Pago de servicios</a></li>
+                    <li><a href="/login">Libro contable</a></li>
+                    <li><a href="/login">Gastos comunes</a></li>
+                    <li><a href="/login">¿Cómo gestionar un subsidio?</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5><a href="/Views/html/logIn.html">Legal</a></h5>
+                <h5><a href="/login">Legal</a></h5>
                 <ul>
-                    <li><a href="/Views/html/logIn.html">Actas</a></li>
-                    <li><a href="/Views/html/logIn.html">Declaraciones juradas</a></li>
+                    <li><a href="/login">Actas</a></li>
+                    <li><a href="/login">Declaraciones juradas</a></li>
                 </ul>
             </div>
 
             <div class="col-2">
-                <h5><a href="/Views/html/logIn.html">Reclamos</a></h5>
+                <h5><a href="/login">Reclamos</a></h5>
                 <ul>
-                    <li><a href="/Views/html/logIn.html">Formulario de reclamo</a></li>
-                    <li><a href="/Views/html/logIn.html">Formulario de denuncia</a></li>
+                    <li><a href="/login">Formulario de reclamo</a></li>
+                    <li><a href="/login">Formulario de denuncia</a></li>
                 </ul>
             </div>
         </div>
