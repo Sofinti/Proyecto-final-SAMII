@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cargar Mis Horas</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="date"], input[type="time"], textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
+        }
+        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Horas de Trabajo</h2>
+
+        <form action="/guardar-horas" method="POST">
+            
+            <div class="form-group">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora_inicio">Hora Inicio:</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora_fin">Hora Fin:</label>
+                <input type="time" id="hora_fin" name="hora_fin" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="descripcion">Descripción (Tarea realizada):</label>
+                <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+            </div>
+            
+            <button type="submit">Guardar Horas</button>
+        </form>
+    </div>
+</body>
+</html>

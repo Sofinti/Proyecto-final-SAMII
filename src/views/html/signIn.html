@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samantha: Registrarse</title>
+
+    <link rel="stylesheet" href="/Views/CSS/signIn.css">
+    <link rel="shortcut icon" href="/img/logo-cooperativa.jpg" type="image/xicon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <header>
+        <div class="btn container">
+            <a class="btn-inicio" href="/login">Iniciar sesión</a>
+        </div>
+        <div class="h1 container">
+            <h1>Samantha</h1>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="cons-content">
+
+            <h3>Registrate</h3>
+
+            <form action="/registro" method="POST">
+
+                <div class="input-container">
+                    <input type="text" name="Nombres" placeholder="" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,40}">
+                    <label for="Nombres">Nombres</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="Apellidos" placeholder="" required pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ\s'-]{2,40}">
+                    <label for="Apellidos">Apellidos</label>
+                </div>
+
+                <p>Fecha de nacimiento</p>
+                <div class="input-container fecha">
+                    <input class="input-fecha" type="date" name="FechaN" required>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="CI" placeholder="" required pattern="^[0-9-]{8,9}$">
+                    <label for="CI">Cédula de identidad</label>
+                </div>
+
+
+                <div class="input-container">
+                    <input type="tel" name="Tel" placeholder="" required pattern="^[0-9]{8,12}$">
+                    <label for="Tel">Teléfono</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="email" name="Email" placeholder="" required pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,100}$">
+                    <label for="Email">Email</label>
+                </div>
+
+                <div class="input-container">
+                    <input type="text" name="Direccion" placeholder="" required>
+                    <label for="Direccion">Dirección</label>
+                </div>
+                
+                <div class="input-container">
+                    <input type="password" name="Contrasenia" placeholder="" required pattern="[a-zA-Z0-9.,:-ªº\s]{8,100}">
+                    <label for="Contrasenia">Contraseña</label>
+                </div>
+
+                <p class="admin">Si eres administrador ingresa la contraseña</p>
+                <div class="input-container">
+                    <input type="password" id="admin_token" name="admin_token" placeholder="">
+                    <label for="admin_token">Contraseña administrador</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrarse</button>
+
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="col-3">
+                <h5><a href="/login">Socios</a></h5>
+                <ul>
+                    <li><a href="/login">Libro de socios</a></li>
+                    <li><a href="/login">Nómina de socios</a></li>
+                    <li><a href="/login">Control de recursos humanos</a></li>
+                </ul>
+            </div>
+
+            <div class="col-4">
+                <h5><a href="/login">Contabilidad</a></h5>
+                <ul>
+                    <li><a href="/login">Pago de servicios</a></li>
+                    <li><a href="/login">Libro contable</a></li>
+                    <li><a href="/login">Gastos comunes</a></li>
+                    <li><a href="/login">¿Cómo gestionar un subsidio?</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2">
+                <h5><a href="/login">Legal</a></h5>
+                <ul>
+                    <li><a href="/login">Actas</a></li>
+                    <li><a href="/login">Declaraciones juradas</a></li>
+                </ul>
+            </div>
+
+            <div class="col-2">
+                <h5><a href="/login">Reclamos</a></h5>
+                <ul>
+                    <li><a href="/login">Formulario de reclamo</a></li>
+                    <li><a href="/login">Formulario de denuncia</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="grupo-2">
+            <small>© Todos los derechos están reservados a SAMII™.</small>
+            <img src="/img/Diseño sin título.png" alt="logo-empresa">
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Novedad - Admin</title>
+    <base href="http://localhost/samantha/">
+    <link rel="stylesheet" href="src/Views/CSS/estilos.css">
+    <style>
+        body { background-color: #f4f4f4; }
+        .admin-form { max-width: 700px; margin: 40px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .admin-form h2 { color: #333; text-align: center; margin-bottom: 20px; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .input-group input, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .btn-submit { background: #28a745; color: white; padding: 12px; width: 100%; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+        .btn-submit:hover { background: #218838; }
+        .btn-volver { display: block; text-align: center; margin-top: 15px; color: #666; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-form">
+        <h2>📢 Publicar Nueva Noticia</h2>
+        
+        <form action="/admin/guardar-novedad" method="POST" enctype="multipart/form-data">
+            
+            <div class="input-group">
+                <label>Título de la Noticia:</label>
+                <input type="text" name="titulo" required placeholder="Ej: Mantenimiento programado...">
+            </div>
+
+            <div class="input-group">
+                <label>Contenido:</label>
+                <textarea name="contenido" rows="6" required placeholder="Escribí acá todos los detalles..."></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Imagen (Opcional):</label>
+                <input type="file" name="imagen" accept="image/*">
+            </div>
+
+            <button type="submit" class="btn-submit">Publicar Noticia</button>
+        </form>
+
+        <a href="admin/dashboard" class="btn-volver">← Volver al Dashboard</a>
+    </div>
+
+</body>
+</html>
