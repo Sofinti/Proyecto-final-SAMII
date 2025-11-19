@@ -1,27 +1,22 @@
 <?php
-// index.php (Refactorizado con estilo switch - Front Controller único)
+// index.php - Front Controller
 
 // -----------------------------------------------------------------
-// PASO 1: Definir la Ruta Base (¡Importante para Docker!)
+// 1. Configuración Inicial
 // -----------------------------------------------------------------
 define('BASE_PATH', '');
 
-// -----------------------------------------------------------------
-// PASO 2: Función de Ayuda
-// -----------------------------------------------------------------
 function base_url($path = '') {
     return BASE_PATH . $path;
 }
 
-// -----------------------------------------------------------------
-// PASO 3: Iniciar Sesión
-// -----------------------------------------------------------------
+// Iniciar sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 // -----------------------------------------------------------------
-// PASO 4: Cargar todas las clases (Motor, Controladores, Modelos)
+// 2. Cargar dependencias (Modelos y Controladores)
 // -----------------------------------------------------------------
 require_once __DIR__ . '/config/Database.php';
 require_once __DIR__ . '/Controllers/AuthController.php';
@@ -30,8 +25,10 @@ require_once __DIR__ . '/Controllers/UsuarioController.php';
 require_once __DIR__ . '/Models/User.php';
 
 // -----------------------------------------------------------------
-// PASO 5: Obtener la URI y el Método
+// 3. Enrutamiento (Router)
 // -----------------------------------------------------------------
+
+// Obtener la URI limpia
 $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $method = $_SERVER['REQUEST_METHOD'];
 $basePath = defined('BASE_PATH') ? BASE_PATH : '';
@@ -44,11 +41,10 @@ if ($uri === '' || $uri[0] !== '/') {
     $uri = '/' . $uri;
 }
 
-// -----------------------------------------------------------------
-// PASO 6: El "Mapa de Rutas" estilo switch (Front Controller)
-// -----------------------------------------------------------------
+// Mapa de Rutas
 switch ($uri) {
-    // --- Rutas de Autenticación ---
+    
+    // --- Home y Autenticación ---
     case '/':
         if ($method === 'GET') {
             require __DIR__ . '/Views/html/index.html';
@@ -82,13 +78,11 @@ switch ($uri) {
         }
         break;
 
-    case '/agregar':
-        if ($method === 'POST') {
-            require __DIR__ . '/Models/agregar.php';
-        }
-        break;
-
-    // --- Ruta del Panel de Admin ---
+    // ===========================================
+    // --- RUTAS DEL PANEL DE ADMINISTRADOR ---
+    // ===========================================
+    
+    // Ver el panel (lista de pendientes)
     case '/admin/dashboard':
         if ($method === 'GET') {
             $controller = new AdminController();
@@ -96,7 +90,17 @@ switch ($uri) {
         }
         break;
 
-    // --- Rutas de Secciones ---
+    // Acción del botón "Habilitar"
+    case '/admin/habilitar':
+        if ($method === 'POST') {
+            $controller = new AdminController();
+            $controller->habilitarUsuario();
+        }
+        break;
+
+    // ===========================================
+    
+    // --- Secciones Principales ---
     case '/calendario':
         if ($method === 'GET') {
             $controller = new UsuarioController();
@@ -106,25 +110,8 @@ switch ($uri) {
         
     case '/socios':
         if ($method === 'GET') {
-            echo "<!-- DEBUG: Entrando al caso /socios -->\n";
-            echo "<!-- DEBUG: __DIR__ = " . __DIR__ . " -->\n";
-            
-            $controllerFile = __DIR__ . '/Controllers/UsuarioController.php';
-            echo "<!-- DEBUG: UsuarioController existe: " . (file_exists($controllerFile) ? 'SI' : 'NO') . " -->\n";
-            
-            $sociosFile = __DIR__ . '/Views/html/secciones/socios.html';
-            echo "<!-- DEBUG: socios.html existe: " . (file_exists($sociosFile) ? 'SI' : 'NO') . " -->\n";
-            echo "<!-- DEBUG: Ruta completa: $sociosFile -->\n";
-            
-            try {
-                $controller = new UsuarioController();
-                echo "<!-- DEBUG: UsuarioController creado exitosamente -->\n";
-                $controller->mostrarSocios();
-                echo "<!-- DEBUG: mostrarSocios() ejecutado -->\n";
-            } catch (Exception $e) {
-                echo "<!-- ERROR: " . $e->getMessage() . " -->\n";
-                echo "<h1>Error: " . $e->getMessage() . "</h1>";
-            }
+            $controller = new UsuarioController();
+            $controller->mostrarSocios();
         }
         break;
         
@@ -148,8 +135,23 @@ switch ($uri) {
             $controller->mostrarReclamos();
         }
         break;
+
+    // --- Módulo de Horas ---
+    case '/mis-horas':
+        if ($method === 'GET') {
+            $controller = new UsuarioController();
+            $controller->showMisHorasForm();
+        }
+        break;
+
+    case '/guardar-horas':
+        if ($method === 'POST') {
+            $controller = new UsuarioController();
+            $controller->handleHorasSubmit();
+        }
+        break;
         
-    // --- Rutas de Novedades ---
+    // --- Novedades ---
     case '/novedades/1':
         if ($method === 'GET') {
             $controller = new UsuarioController();
@@ -185,11 +187,10 @@ switch ($uri) {
         }
         break;
 
-    // --- Ruta 404 ---
+    // --- Ruta 404 (No Encontrada) ---
     default:
         http_response_code(404);
-        echo "<h1>404 No Encontrada</h1><p>Ruta no definida en el sistema.</p>";
-        echo "<!-- DEBUG URI solicitada: $uri -->";
+        echo "<h1>404 No Encontrada</h1><p>La página que buscas no existe.</p>";
         break;
 }
 ?>

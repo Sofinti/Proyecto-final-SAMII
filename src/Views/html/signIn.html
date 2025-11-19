@@ -53,6 +53,7 @@
                     <label for="CI">Cédula de identidad</label>
                 </div>
 
+
                 <div class="input-container">
                     <input type="tel" name="Tel" placeholder="" required pattern="^[0-9]{8,12}$">
                     <label for="Tel">Teléfono</label>
@@ -73,7 +74,13 @@
                     <label for="Contrasenia">Contraseña</label>
                 </div>
 
-                <button type="submit">Crear</button>
+                <p class="admin">Si eres administrador ingresa la contraseña</p>
+                <div class="input-container">
+                    <input type="password" id="admin_token" name="admin_token" placeholder="">
+                    <label for="admin_token">Contraseña administrador</label>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrarse</button>
 
             </form>
         </div>

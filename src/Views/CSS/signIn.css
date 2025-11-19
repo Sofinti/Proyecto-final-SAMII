@@ -95,16 +95,13 @@ input, select {
 
 .fecha {grid-column: 3 / span 6;}
 
-.genero { 
-    grid-column: 3 / span 6;
-    appearance: none;
-    background: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23757575' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") no-repeat right 10px center / 12px;
-}
+.admin {grid-column: 1 / span 8}
 
 label {
     pointer-events: none;
     position: absolute;
-    left: 16px; top: 19px;
+    left: 16px; 
+    top: 19px;
     color: var(--color-secondary);
     letter-spacing: .5px;
     transition: .15s ease;    
