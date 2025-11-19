@@ -1,0 +1,119 @@
+/* Se van a adaptar a los colores de la cooperativa */
+:root { 
+    --color-light: #FBFBFF;
+    --color-primary: #003f7f;
+    --color-secondary: #00c9a7;
+    --color-medium: #e7e7e7;
+    --color-dark: #1F1E1D;
+}
+
+html {height: 100%;}
+
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    background: var(--color-medium);
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    font-family: "Roboto", sans-serif;
+    color: var(--color-dark);
+    background: #585858cc;
+}
+
+.container {width: 95%; margin: 0 auto;}
+
+header {min-height: 90px; position: sticky; top: 0; z-index: 5; background: var(--color-light); height: max-content;}
+
+header .container {display: flex; justify-content: space-between; align-items: center; height: 100%;}
+
+nav ul {display: flex;}
+
+nav ul li {margin-left: 16px; align-self: center;}
+
+nav ul li a{
+    display: block;
+    background: var(--color-primary);
+    align-content: end;
+    padding: 5px 25px;
+    border: 2px solid var(--color-primary);
+    border-radius: 5px;
+    margin: 20px;
+    font-size: 17px;
+    color: var(--color-light);
+}
+nav ul li a:hover{background: var(--color-light);color: var(--color-primary);}
+
+main {display: grid; padding: 20px;}
+
+h1 {font-size: 35px; color: var(--color-dark); margin: 1rem 0;}
+h2 {font-size: 26px; color: var(--color-light); margin: 1rem 0;}
+h5 {font-size: 18px; color: var(--color-dark); margin: 1rem 0; vertical-align: inherit;}
+p {color: var(--color-light);}
+
+.cons-content {
+    background: var(--color-primary);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-self: center;
+    padding: 30px;
+    width: auto;
+    height: auto;
+    min-width: 800px;
+    border-radius: 25px;
+}
+
+main section {
+    padding: 0 24px 48px 18px;
+    display: grid; 
+    grid-template:repeat(8, 1fr); 
+    gap: 24px 16px;
+    user-select: none;
+}
+
+table {background: var(--color-light); width: 100%; border-collapse: collapse; margin-top: 20px; }
+
+th, td {padding: 12px; border: 1px solid var(--color-secondary); text-align: left; }
+
+th {background-color: var(--color-secondary); color: var(--color-light);}
+
+.btn-habilitar {
+    background-color: #218838; 
+    border: 2px solid var(--color-light); 
+    color: var(--color-light); 
+    padding: 8px 12px; 
+    border-radius: 4px; 
+    cursor: pointer;
+}
+.btn-habilitar:hover {background-color: var(--color-light); border: 2px solid #218838; color: #218838;}
+.btn-habilitar:active {box-shadow: 0 0 0 9px rgba(0, 0, 0, .04);}
+
+.msg {background: var(--color-light); margin-top: 20px; padding: 16px; border: 1px solid var(--color-secondary); border-radius: 2px;}
+.empty-msg {color: var(--color-dark);}
+
+footer {
+    background: var(--color-primary);
+    min-height: 200px;
+}
+
+footer .container {display: flex; justify-content: space-between; align-items: center; height: 100%;}
+
+footer h5, footer p {color: var(--color-light); text-align: center;}
+
+footer ul li {vertical-align: inherit;}
+
+footer a {color: var(--color-light); margin-left: 16px; transition: all .4s; font-weight: 500; text-align: center;}
+footer a:hover {color: var(--color-secondary);}
+
+footer .grupo-2 {background: var(--color-primary);padding: 15px 10px; text-align: center;}
+
+footer .grupo-2 small {color: var(--color-light);}
+
+footer .grupo-2 img {width: 30px;}

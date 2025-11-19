@@ -124,7 +124,7 @@ main form {
 
 .input-container {position: relative; grid-column: 1 / span 8;}
 
-main input, select {
+main input{
     padding: 16px;
     width: 100%;
     height: 56px;

@@ -14,8 +14,34 @@ class AuthController {
             $contrasenia = $_POST['Contrasenia'] ?? '';
             
             if (empty($correo) || empty($contrasenia)) {
-                echo "<h1 class='bad'>Por favor completa todos los campos</h1>";
-                echo "<a href='/login'>Volver al login</a>";
+                echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Por favor completa todos los campos</h1> 
+                            <a href='/login' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Volver a iniciar sesión</a>
+                        </div>
+                    </div>
+                ";
                 return;
             }
 
@@ -27,9 +53,35 @@ class AuthController {
             
             if ($usuario) {
                 if ($usuario['Activo'] == 0) {
-                    echo "<h1 class='bad'>Cuenta pendiente de aprobación</h1>";
-                    echo "<p>Un administrador aún no ha habilitado tu cuenta.</p>";
-                    echo "<a href='/login'>Volver</a>";
+                    echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                            <div style='background: #003f7f;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            justify-self: center;
+                            padding: 30px;
+                            padding-bottom: 50px;
+                            width: auto;
+                            height: auto;
+                            max-width: 550px;
+                            border-radius: 25px;'>
+                                <h1 class='bad' style='color: #FBFBFF;'>Cuenta pendiente de aprobación.</h1> 
+                                <p style='color: #FBFBFF;'>Un administrador aún no ha habilitado tu cuenta.</p>
+                                <a href='/login' style='display: flex;
+                                justify-self: center;
+                                background: #FBFBFF;
+                                font-size: 16px;
+                                padding: 8px 12px;
+                                border: 2px solid #003f7f;
+                                border-radius: 20px;
+                                cursor: pointer;
+                                box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                                transition: .3s;
+                                text-decoration: none;
+                                color: #003f7f;'>Volver</a>
+                            </div>
+                        </div>
+                    ";
                     return; 
                 }
                 if (password_verify($contrasenia, $usuario['Contrasenia'])) {
@@ -41,15 +93,82 @@ class AuthController {
                     header('Location: /');
                     exit();
                 } else {
-                    echo "<h1 class='bad'>Contraseña incorrecta</h1>";
-                    echo "<a href='/login'>Volver a intentar</a>";
+                    echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                            <div style='background: #003f7f;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-size: cover;
+                            justify-self: center;
+                            padding: 30px;
+                            padding-bottom: 50px;
+                            width: auto;
+                            height: auto;
+                            max-width: 550px;
+                            border-radius: 25px;'>
+                                <h1 class='bad' style='color: #FBFBFF;'>Contraseña incorrecta.</h1> 
+                                <a href='/login' style='display: flex;
+                                justify-self: center;
+                                background: #FBFBFF;
+                                font-size: 16px;
+                                padding: 8px 12px;
+                                border: 2px solid #003f7f;
+                                border-radius: 20px;
+                                cursor: pointer;
+                                box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                                transition: .3s;
+                                text-decoration: none;
+                                color: #003f7f;'>Volver a intentar</a>
+                            </div>
+                        </div>
+                    ";
                 }
             } else {
-                echo "<h1 class='bad'>El usuario no existe. Regístrate.</h1>";
-                echo "<a href='/registro'>Ir a Registrarme</a>";
+                echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>El usuario no existe.</h1> 
+                            <a href='/registro' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Ir a registrarme</a>
+                        </div>
+                    </div>
+                ";
             }
         } catch (Exception $e) {
-            echo "<h1 class='bad'>Error: " . $e->getMessage() . "</h1>";
+            echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Error: " . $e->getMessage() . "</h1> 
+                        </div>
+                    </div>
+                ";
         }
     }
 
@@ -76,8 +195,34 @@ class AuthController {
 
             // --- 2. Validación ---
             if (empty($cedula) || empty($nombre) || empty($apellido) || empty($correo) || empty($contrasenia)) {
-                echo "<h1 class='bad'>Por favor completa todos los campos obligatorios.</h1>";
-                echo "<a href='/registro'>Volver</a>";
+                echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Por favor completa todos los campos obligatorios.</h1> 
+                            <a href='/registro' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Volver</a>
+                        </div>
+                    </div>
+                ";
                 return;
             }
 
@@ -90,8 +235,34 @@ class AuthController {
             $stmt_check->execute([$correo, $cedula]);
             
             if ($stmt_check->fetch()) {
-                echo "<h1 class='bad'>Error: El correo o la cédula ya existen.</h1>";
-                echo "<a href='/login'>Ir a Iniciar Sesión</a>";
+                echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Error: El correo o la cédula ya existen.</h1> 
+                            <a href='/login' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Ir a Iniciar Sesión</a>
+                        </div>
+                    </div>
+                ";
                 return;
             }
 
@@ -103,9 +274,63 @@ class AuthController {
 
             if ($tokenIngresado === $CLAVE_MAESTRA) {
                 $rol = 1; $activo = 1; $habTrabajo = 1;
-                $mensaje = "<h3 style='color:green'>✅ ¡Admin Validado!</h3>";
+                $mensaje = "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='good' style='color: #FBFBFF;'>¡Registro recibido!</h1>
+                            <h3 style='color: #FBFBFF;'>✅ ¡Admin validado correctamente!</h3> 
+                            <a href='/login' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Ir a Iniciar Sesión</a>
+                        </div>
+                    </div>";
             } else {
-                $mensaje = "<h3>Estado: Pendiente de Aprobación</h3>";
+                $mensaje = "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='good' style='color: #FBFBFF;'>¡Registro recibido!</h1>
+                            <h3 style='color: #FBFBFF;'>Estado: Pendiente de aprobación</h3> 
+                            <a href='/login' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Ir a Iniciar Sesión</a>
+                        </div>
+                    </div>";
             }
 
             // --- 3. Insertar en BD ---
@@ -120,13 +345,37 @@ class AuthController {
                 $rol, $activo, $habTrabajo
             ]); 
             
-            echo "<h1 class='good'>¡Registro recibido!</h1>";
             echo $mensaje;
-            echo "<a href='/login'>Ir a Iniciar Sesión</a>";
 
         } catch (Exception $e) {
-            echo "<h1 class='bad'>Error: " . $e->getMessage() . "</h1>";
-            echo "<a href='/registro'>Volver</a>";
+            echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Error: " . $e->getMessage() . "</h1> 
+                            <a href='/registro' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Volver</a>
+                        </div>
+                    </div>
+                ";
         }
     }
 
