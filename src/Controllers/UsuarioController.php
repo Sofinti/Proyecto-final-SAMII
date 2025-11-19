@@ -73,15 +73,67 @@ class UsuarioController {
             $stmt->execute([$id_usuario, $horasDecimales, $descripcion]);
 
             // 6. Mensaje de Éxito
-            echo "<h1 style='color: green;'>¡Horas Registradas!</h1>";
-            echo "<p>Se han registrado <b>" . number_format($horasDecimales, 2) . " horas</b>.</p>";
-            echo "<p>Estado: <b>Pendiente de Aprobación</b></p>";
-            echo "<a href='/mis-horas'>Cargar más</a>";
+            echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>¡Horas Registradas!</h1> 
+                            <p style='color: #FBFBFF;'>Se han registrado <b style='color: #FBFBFF;'>" . number_format($horasDecimales, 2) . " horas</b>.</p>
+                            <p style='color: #FBFBFF;'>Estado: <b style='color: #FBFBFF;'>Pendiente de Aprobación</b></p>
+                            <a href='/mis-horas' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Cargar más</a>
+                        </div>
+                    </div>
+                ";
 
         } catch (Exception $e) {
-            echo "<h1 style='color:red;'>Error al guardar:</h1>";
-            echo "<p>" . $e->getMessage() . "</p>";
-            echo "<a href='/mis-horas'>Volver</a>";
+            echo "<div style='display: flex; justify-content: center; align-items: center; height: 100%;margin: 0; background: #585858cc'>
+                        <div style='background: #003f7f;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: cover;
+                        justify-self: center;
+                        padding: 30px;
+                        padding-bottom: 50px;
+                        width: auto;
+                        height: auto;
+                        max-width: 550px;
+                        border-radius: 25px;'>
+                            <h1 class='bad' style='color: #FBFBFF;'>Error al guardar:</h1>
+                            <p style='color: #FBFBFF;'>" . $e->getMessage() . "</p>
+                            <a href='/mis-horas' style='display: flex;
+                            justify-self: center;
+                            background: #FBFBFF;
+                            font-size: 16px;
+                            padding: 8px 12px;
+                            border: 2px solid #003f7f;
+                            border-radius: 20px;
+                            cursor: pointer;
+                            box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, .2);
+                            transition: .3s;
+                            text-decoration: none;
+                            color: #003f7f;'>Volver</a>
+                        </div>
+                    </div>
+                ";
         }
     }
 

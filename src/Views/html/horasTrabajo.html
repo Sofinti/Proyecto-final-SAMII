@@ -1,49 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Cargar Mis Horas</title>
-    <style>
-        body { font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="date"], input[type="time"], textarea {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box; /* Importante para que el padding no rompa el ancho */
-        }
-        button { padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; }
-    </style>
+    <title>Samantha: Registro de horas de trabajo</title>
+    <link rel="stylesheet" href="/Views/CSS/horasTrabajo.css">
+    <link rel="shortcut icon" href="/img/logo-cooperativa.jpg" type="image/xicon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h2>Registrar Horas de Trabajo</h2>
 
-        <form action="/guardar-horas" method="POST">
-            
-            <div class="form-group">
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
+<body>
+
+    <header>
+        <div class="container">
+            <a id="logo" href="/Views/html/index.html"><img src="/img/logo-cooperativa.jpg" alt="Samantha"></a>
+
+            <form id="search-form" method="get" action="/search">
+                <fieldset>
+                    <input type="text" id="search-input" name="q" placeholder="Buscar...">
+                    <button type="submit">Buscar</button>
+                </fieldset>
+            </form>
+
+            <nav>
+                <ul>
+                    <li><a href="/Views/html/index.html">Principal</a></li>
+                    <li><a href=""><img src="/img/Iconos/user.png" alt="Icono-usuario"></a>
+                        <ul>
+                            <li><a href="">Mi cuenta</a>
+                            <li><a href="">Configuración</a>
+                            <li><a href="/logout">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="cons-content">
+
+            <section>
+                <h2>Registrar Horas de Trabajo</h2>
+
+                <form action="/guardar-horas" method="POST">
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora_inicio">Hora Inicio:</label>
+                        <input type="time" id="hora_inicio" name="hora_inicio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hora_fin">Hora Fin:</label>
+                        <input type="time" id="hora_fin" name="hora_fin" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción (Tarea realizada):</label>
+                        <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit">Guardar Horas</button>
+                </form>
+            </section>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="col-3">
+                <h5><a href="/socios">Socios</a></h5>
+                <ul>
+                    <li><a href="">Libro de socios</a></li>
+                    <li><a href="">Nómina de socios</a></li>
+                    <li><a href="">Control de recursos humanos</a></li>
+                </ul>
             </div>
-            
-            <div class="form-group">
-                <label for="hora_inicio">Hora Inicio:</label>
-                <input type="time" id="hora_inicio" name="hora_inicio" required>
+
+            <div class="col-4">
+                <h5><a href="/contabilidad">Contabilidad</a></h5>
+                <ul>
+                    <li><a href="">Pago de servicios</a></li>
+                    <li><a href="">Libro contable</a></li>
+                    <li><a href="">Gastos comunes</a></li>
+                    <li><a href="https://www.anv.gub.uy/solicitud-de-subsidios-para-cooperativas">¿Cómo gestionar un
+                            subsidio?</a></li>
+                </ul>
             </div>
-            
-            <div class="form-group">
-                <label for="hora_fin">Hora Fin:</label>
-                <input type="time" id="hora_fin" name="hora_fin" required>
+
+            <div class="col-2">
+                <h5><a href="/legal">Legal</a></h5>
+                <ul>
+                    <li><a href="">Actas</a></li>
+                    <li><a
+                            href="https://www.gub.uy/junta-transparencia-etica-publica/politicas-y-gestion/gestion-declaraciones-juradas#:~:text=Descripci%C3%B3n,archivo%20de%20las%20declaraciones%20juradas.">Declaraciones
+                            juradas</a></li>
+                </ul>
             </div>
-            
-            <div class="form-group">
-                <label for="descripcion">Descripción (Tarea realizada):</label>
-                <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+
+            <div class="col-2">
+                <h5><a href="/reclamos">Reclamos</a></h5>
+                <ul>
+                    <li><a href="/Documentos/">Formulario de reclamo</a></li>
+                    <li><a href="/Documentos/">Formulario de denuncia</a></li>
+                </ul>
             </div>
-            
-            <button type="submit">Guardar Horas</button>
-        </form>
-    </div>
+        </div>
+
+        <div class="grupo-2">
+            <small>© Todos los derechos están reservados a SAMII™.</small>
+            <img src="/img/Diseño sin título.png" alt="logo-empresa">
+        </div>
+    </footer>
+
 </body>
+
 </html>

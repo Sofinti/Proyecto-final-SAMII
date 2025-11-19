@@ -24,14 +24,9 @@ body {
     grid-template-rows: auto 1fr;
     font-family: "Roboto", sans-serif;
     color: var(--color-dark);
-    background: #585858cc;
 }
 
-.container {width: 95%; margin: 0 auto;}
-
-header {min-height: 90px; top: 0; z-index: 5; height: max-content;}
-
-header .container {display: flex; align-items: center; height: 100%;}
+.container {width: 95%; max-width: 1096px; margin: 0 auto;}
 
 header {min-height: 90px; position: sticky; top: 0; z-index: 5; background: var(--color-light);}
 
@@ -54,16 +49,14 @@ header .container {display: flex; justify-content: space-between; align-items: c
     border-radius: 4px;
 }
 
-header button[type="submit"] {
-    pointer-events: none;
+button[type="submit"] {
     background-color: var(--color-primary);
+    color: var(--color-light);
     padding: 8px 12px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
-
-header button a {pointer-events: all; color: var(--color-light);}
 
 nav ul {display: flex;}
 
@@ -75,25 +68,19 @@ nav a {color: var(--color-dark); transition: all .4s; font-weight: 500; display:
 
 nav a:hover {color: var(--color-primary);}
 
-.btn {justify-content: end;}
-.h1 {justify-content: center;}
+nav ul li ul {position: absolute; width: 200px; background: var(--color-primary);display: none; border-radius: 2%;}
 
-.btn-inicio{
-    background: var(--color-primary);
-    display: inline-block;
-    align-content: flex-end;
-    padding: 5px 25px;
-    border: 2px solid var(--color-primary);
-    border-radius: 5px;
-    margin: 20px;
-    font-size: 17px;
-    color: var(--color-light);
-}
-.btn-inicio:hover{background: var(--color-light);color: var(--color-primary);}
+nav ul li ul li {width: auto;}
+
+nav ul li ul li a{color: var(--color-light);font-size: 15px; padding: 10px;}
+
+nav ul li ul li a:hover {color: var(--color-secondary);}
+
+nav ul li:hover > ul {display: initial;}
 
 main {display: grid; padding: 20px;}
 
-h3 {font-size: 25px; color: var(--color-light); margin: 1rem 0; justify-self: center;}
+h2 {font-size: 26px; color: var(--color-light); margin: 1rem 0;}
 h5 {font-size: 18px; color: var(--color-dark); margin: 1rem 0; vertical-align: inherit;}
 p {color: var(--color-light);}
 
@@ -106,7 +93,7 @@ p {color: var(--color-light);}
     padding: 30px;
     width: auto;
     height: auto;
-    max-width: 550px;
+    max-width: 800px;
     border-radius: 25px;
 }
 
@@ -120,7 +107,7 @@ main form {
 
 .input-container {position: relative; grid-column: 1 / span 8;}
 
-main input{
+main input, main textarea{
     padding: 16px;
     width: 100%;
     height: 56px;
@@ -131,35 +118,19 @@ main input{
     letter-spacing: .5px;
 }
 
-label {
-    pointer-events: none;
-    position: absolute;
-    left: 16px; top: 19px;
-    color: var(--color-secondary);
-    letter-spacing: .5px;
-    transition: .15s ease;    
+textarea {
+    margin-top: 5px;
+    grid-column: 2 / span 7;
+    resize: vertical; 
+    max-height: 200px; 
+    min-height: 96px;
 }
 
-main input:hover {border: 1px solid var(--color-dark);}
-
-main input:focus {border: 2px solid var(--color-primary); box-shadow: 0 0 3px #00c9a774;}
-
-main input:valid {color: var(--color-dark);}
-
-main input:invalid:not(:placeholder-shown) {color: var(--color-dark); border: solid 2px red;}
-
-main input:focus + label, main input:not(:placeholder-shown) + label {
-    top: -11px;
-    font-size: 12px; 
-    font-weight: 400;
-    color: var(--color-primary);
-    letter-spacing: .05px;
-    background: var(--color-light);
-    padding: 2px;      
+label {
+    color: var(--color-light);
 }
 
 main button[type="submit"] {
-    grid-column: 1 / span 8;
     height: 40px;
     background: var(--color-light);
     color: var(--color-primary);
@@ -175,14 +146,10 @@ main button[type="submit"] {
 main button:hover {background: var(--color-primary); border: 2px solid var(--color-light); color: var(--color-light);}
 main button:active {box-shadow: 0 0 0 9px rgba(0, 0, 0, .04);}
 
-main form p{align-self: center; grid-column: 2 / span 6;}
-
-p a {color: var(--color-secondary); transition: all .4s;}
-p a:hover {color: var(--color-light);text-decoration: underline var(--color-secondary);}
-
 footer {
     background: var(--color-primary);
     min-height: 200px;
+    margin: 16px 0 0 0;
 }
 
 footer .container {display: flex; justify-content: space-between; align-items: center; height: 100%;}
