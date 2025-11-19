@@ -32,12 +32,12 @@
             <h2>Solicitudes de registro pendientes</h2>
 
             <section>
-                <div class="msg">
-                    <?php if (empty($pendientes)): ?>
+                <?php if (empty($pendientes)): ?>
+                    <div class="msg">
                         <p class="empty-msg">✅ No hay usuarios pendientes de aprobación.</p>
-                    <?php else: ?>
-                </div>
-                <table>
+                    </div>
+                <?php else: ?>                
+                    <table>
                     <thead>
                         <tr>
                             <th>ID</th>
